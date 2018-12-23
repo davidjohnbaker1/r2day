@@ -12,8 +12,10 @@ Materials for a 2 day long crash course on R for beginners.
 
 ## Day I
 
-I. Introduction to R
-	A. Why R?
+* Introduction to R
+  * Why R?
+
+
 		i. community (get in pairs) 
 		ii. (rest of list)
 		iii. Learning curve (no dumb questions) 
