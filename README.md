@@ -2,7 +2,22 @@
 
 Materials for a 2 day long crash course on R for beginners.
 
+## TO DO
+
 * PUT IN CC STATEMENT
+* Make Rproj
+* Google Slides
+* Slides for Download on github
+* Find Financial Dataset
+* Transfer bookdown code to Rmarkdown docs
+
+
+## Thinking
+
+* Open with Slides (why R?)
+* Everyone Able to first pull everything, render in HTML
+* importance of typing it without reference (learning psych)
+* Walking thru Markdown file, feel free to take notes on your own.
 
 ## Pre-Reqs
 
@@ -14,8 +29,6 @@ Materials for a 2 day long crash course on R for beginners.
 
 * Introduction to R
   * Why R?
-
-
 		i. community (get in pairs) 
 		ii. (rest of list)
 		iii. Learning curve (no dumb questions) 
