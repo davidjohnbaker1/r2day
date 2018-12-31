@@ -7,13 +7,224 @@ output: html_document
 
 ## RStudio Shortcuts and Markdown
 
+In this session I will be using a lot of Keyboard Shortcuts when typing myself.
+In the past, people have always asked about these, so I'm anticipating that question with a link [here](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts) to that page.
+
 ## R as Calculator
 
-## Datasets
+The Console of R is where all the action happens. 
+You can use it just like you would use a calculator. 
+Try to do some basic math operations in it.
 
-## Nitty Gritty
+```{r}
+2 + 2
+5 - 2
+10 / 4
+9 * 200
+sqrt(81)
+10 > 4
+2 < -1
+```
+
+You don't always want to print your output and retype it in. 
+The idea of being a good programmer is to be very lazy (efficient).
+
+One of the best ways to be efficient when programming is to save variables to objects.
+Below is some example code that uses the ```<-``` operator to assign some math to an object.
+After you assign it to an object, you can then manipulate it like you would any other number.
+
+```{r}
+foo <- 2 * 3
+foo * 6
+```
+
+After running these two lines of code, notice what has popped up in your environment in RStudio!
+You should see that you now have any object in the Environment called `foo`.
+
+In addition to saving single values to objects, you can also store a collection of values.
+Below we use an example that might have a bit more meaning, the below stores what could be some data into an object that represents what it might be. 
+
+```{r}
+yearsInGradSchool <- c(2,1,4,5,6,7,3,2,4,5,3)
+```
+
+The way that the line above works is that we use the ```c()``` function (c for concatenate) to group together a bunch of the same type of data (numbers) into a vector.
+Once we have everything concatenated and stored into an object, we can then manipulate all the numbers in the object just like we did above with a single number.
+For example, we could multiply all the numbers by three. 
+
+```{r}
+yearsInGradSchool * 3
+```
+
+Or maybe we realized that our inputs were wrong and we need to shave off two years off of each of the entries.
+
+```{r}
+yearsInGradSchool - 2
+```
+
+Or perhaps we want to find out which of our pieces of data (and other data associated with that observation) are less than 2.
+
+```{r}
+yearsInGradSchool < 2
+```
+
+Any sort of mathematical operation can be performed on a vector!
+In addition to treating it like a mathematical operation, we can also run functions on objects.
+By looking at the name of each function and it's output, take a guess at what each of the below functions does.
+
+```{r}
+mean(yearsInGradSchool)
+sd(yearsInGradSchool)
+hist(yearsInGradSchool)
+scale(yearsInGradSchool)
+range(yearsInGradSchool)
+min(yearsInGradSchool)
+class(yearsInGradSchool)
+str(yearsInGradSchool)
+summary(yearsInGradSchool)
+```
+
+Often working with data, we don't want to just play with one group of numbers.
+Most of the time we are trying to compare different observations in psychology.
+If we then create two vectors (one of which we have already made!) and then combine them together into a data frame, we have something sort of looking like a spreadsheet.
+
+
+```{r}
+yearsInGradSchool <- c(2,1,4,5,6,7,3,2,4,5,3)
+classesTaken <- c(5,2,5,7,9,9,2,8,4,7,2)
+gradData <- data.frame(yearsInGradSchool,classesTaken)
+gradData
+```
+
+Now if we wanted to use something like R's correlation function we could just pass in the two objects that we have like this and get a correlation value. 
+
+```{r}
+cor(yearsInGradSchool,classesTaken)
+```
+But often our data will be saved in data frames and we need to be able to access one of our vectors inside our data frame. 
+To access a piece of information in a data frame we use the ```$``` operator.
+
+```{r}
+gradData$yearsInGradSchool
+```
+
+Running the above code will print out the vector called ```yearsInGradSchool``` from the data frame ```gradData```.
+Using this form, we can then use this with the correlation function.
+
+```{r}
+cor(gradData$yearsInGradSchool,gradData$classesTaken)
+```
+
+In addition to just getting numeric output, we also want to be able to look at our data.
+Take a look at the code below and try to figure out what the function call is, as well as what each argument (or thing you pass to a function) does. 
+
+```{r}
+plot(yearsInGradSchool,classesTaken, 
+     data = gradData, 
+     main = "My Plot", 
+     xlab = "Years in Grad School", 
+     ylab = "Classes Taken")
+```
+
+If you are having a hard time understanding arguments, one thing that might help to think about is that each argument is like a click in a software program like SPSS.
+Imagine you want to make the same plot with this data in SSPSS, what would you do?
+The first thing you would do is to go to the top of the bar and find the ```Plot``` function and click it.
+This is the same as typing out ```plot()``` in R.
+Then you would have to tell that new pop up screen what two variables you want to plot and click on the related variables.
+Dragging and dropping those variables into your plot builder is the same as just typing out the variables you want.
+Lastly you want to put names on your axes and a title on your plot.
+The same logic would follow. 
+We'll explore these ideas a bit more in the next section.
 
 ## Data Exploration
 
+```{r}
+str(iris)
+class(iris)
+summary(iris)
+```
+
+Accessing individual 'columns' is done with the ```$``` operator
+
+```{r}
+iris$Sepal.Length
+```
+
+Can you use this to plot the different numeric values against each other?
+
+What would the follow commands do?
+
+```{r}
+hist(scale(iris$Sepal.Length))
+iris$Sepal.Length.scale <- scale(iris$Sepal.Length)
+```
+
+## Indexing
+
+Let's combine logical indexing with creating new objects.
+
+What do the follow commands do? Why?
+
+```{r}
+iris[1,1]
+iris[2,]
+iris[,5]
+iris[iris$Sepal.Length < 5,]
+iris[,c(1:4)]
+iris[c(1,2,3,4,5,6,8),c(1:3,5)]
+Setosas <- iris[iris$Species == "setosa",]
+```
+This could be an entire lecture by itself!!!
+
 ## Saving and Importing
 
+Finally, if we want to Import or Save other data, we can do that via the Console.
+
+### The Working Directory
+
+Most of the work we have done this far is data that we do not want to save.
+Most of the work you will do after this workshop, you will want to save.
+
+R works by pointing at a folder or directory on your computer.
+To see where R is pointing now, run the following code
+
+```{R}
+getwd()
+```
+
+Whatever you **do** in your R session will happen here unless you tell it to otherwise.
+If you do not want R pointing in this location in your computer, you need to set your working directory elsewhere.
+To do this, use the ```setwd()``` command.
+This is also a good chance to use RStudio's auto complete feature.
+
+```{r, eval=FALSE}
+setwd()
+```
+Open a double quotation in the function then press TAB.
+This will allow you to navigate your computer.
+Going deeper into your directory structure can be done by just following the auto complete.
+Going higher in the directory requires you to type ```../``` which will allow you to look up a level.
+Set your working directory to the ```output``` directory.
+
+The console should now read that it is pointed to the output directory.
+
+You can write a dataset to your working directory with the ```write_csv()``` command.
+
+```{r,eval=FALSE}
+write.csv(x = iris, file = "MyIris.csv")
+```
+
+### Importing Data
+
+Data is imported using the same logic.
+You can use the ```read.csv()``` function to read in a csv file.
+At first, it might be easier to use the Import Dataset function in RStudio (Top right pane).
+
+## Exercises
+
+1. Import in the FINANCIAL DATA DATSET using RStudio's Import Dataset Function.
+2. Create a new R Script and paste in the code used from the import.
+3. Write a line of code to create the basic descriptive statistics for each column in the dataset.
+4. Create a histogram of the THIS column.
+5. Export the histogram with a custom x axis, y axis, and title.
+6. Create a new variable that is the z scores of the age data.
