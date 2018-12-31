@@ -5,12 +5,93 @@ date: "12/23/2018"
 output: html_document
 ---
 
-## Review Quiz
-
-## Theory of Packages
-
 ## tidyverse + tidydata
+
+One of the most important concepts data science and R is the idea of [tidydata](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
+
+The idea behind tidy data is that...
+
+1. Each variable forms a colum
+2. Each observation forms a row.
+3. Each type of observation unit forms a table.
+
+If your data is in this format, then you can do almost anything with the tidyverse.
+
+In order to use the tidyverse, you first need to install it.
+```{r}
+# install.packages("tidyverse") # Only need to do this once! 
+# library(tidyverse)
+```
 
 ## Five Verbs
 
-## ggplot2 
+The five tidyverse verbs come from the dplyr package.
+More information on this package can be found [here](https://dplyr.tidyverse.org/) along with these descriptions.
+
+* ```mutate()``` adds new variables that are functions of existing variables
+* ```select()``` picks variables based on their names.
+* ```filter()``` picks cases based on their values.
+* ```summarise()``` reduces multiple values down to a single summary.
+* ```arrange()``` changes the ordering of the rows.
+
+We can think the verbs as happening in the logical order you would want to grab them.
+Each of the verbs is also going to be connected to one another with the pipe operator.
+The idea behind the pipe or ```%>%`` is that the output of the last line is the first argument of the new function.
+
+For example, if we wanted to make a small table that only had Setosa flowers that only had Petals greater than .2 cm from our Iris dataset and then only look at the Sepal Lenghts from yesterday we would type:
+
+```{r}
+str(iris)
+iris_only_setosa <- iris[iris$Species == "setosa",]
+iris_only_setosa_gt_point2 <- iris_only_setosa[iris$Petal.Width > .2,]
+iris_only_setosa_gt_point2[,c(1,5)]
+```
+Which is a bit verbose.
+
+In order to do this with the tidyverse, you would start with the dataset, the run two verbs over it, connected with the pipe.
+
+```{r}
+library(tidyverse)
+iris_tibble <- as.tibble(iris)
+
+iris %>%
+  filter(Species == "setosa") %>%
+  filter(Petal.Width > .2) %>%
+  select(Sepal.Length, Species)
+```
+
+Both create the same output, but one is much easier to read.
+
+We will now explore a dataset using the five verbs in the dplyr package.
+
+## Economics Data
+
+### Select
+
+### Filter
+
+### Mutate
+
+### Arrange
+
+### Sumemrise 
+
+### Quiz
+
+In a new script, create following:
+
+* Create a table with only ____
+* Create a table with SINGLE LOGIC
+* Create a table with DOUBLE LOGIC
+* Create a new variable, XXX that is
+* Find the most XXX
+* Find the Least
+
+## ggplot2
+
+One of R's strongest draws is it's ability to make nice plots.
+Many of the plots are made with ggplot2.
+If your data is tidy, it is also easier to explore.
+
+### Layering
+
