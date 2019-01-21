@@ -49,6 +49,21 @@ txhousing %>%
   ggplot(aes(x = year, y = zListings)) + geom_point() +
   facet_wrap(~city)
 
+elpasoVaustin <- txhousing %>%
+  select(city, sales) %>%
+  filter(city == "El Paso" | city == "Austin")
+
+# Welch's T test
+t.test(elpasoVaustin$sales ~ elpasoVaustin$city )
+
+# Student's T Test
+t.test(elpasoVaustin$sales ~ elpasoVaustin$city, var.equal = TRUE )
+
+# Paired T-test 
+# ( Bad use here! )
+t.test(elpasoVaustin$sales ~ elpasoVaustin$city, paired = TRUE )
+
+
 ```
 
 
