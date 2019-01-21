@@ -20,7 +20,7 @@ If your data is in this format, then you can do almost anything with the tidyver
 In order to use the tidyverse, you first need to install it.
 ```{r}
 # install.packages("tidyverse") # Only need to do this once! 
-# library(tidyverse)
+library(tidyverse)
 ```
 
 ## Five Verbs
@@ -38,13 +38,13 @@ We can think the verbs as happening in the logical order you would want to grab 
 Each of the verbs is also going to be connected to one another with the pipe operator.
 The idea behind the pipe or ```%>%`` is that the output of the last line is the first argument of the new function.
 
-For example, if we wanted to make a small table that only had Setosa flowers that only had Petals greater than .2 cm from our Iris dataset and then only look at the Sepal Lenghts from yesterday we would type:
+For example, if we wanted to make a small table that only had data from El Paso from 2011, then only get the first and fifth columns we would run the following code:
 
 ```{r}
-str(iris)
-iris_only_setosa <- iris[iris$Species == "setosa",]
-iris_only_setosa_gt_point2 <- iris_only_setosa[iris$Petal.Width > .2,]
-iris_only_setosa_gt_point2[,c(1,5)]
+str(txhousing)
+txhousing_only_el_paso <- txhousing[txhousing$city == "El Paso",]
+iris_only_only_el_paso_2005_2011 <- txhousing_only_el_paso[txhousing_only_el_paso$year >= 2011,]
+iris_only_only_el_paso_2005_2011[,c(1,5)]
 ```
 Which is a bit verbose.
 
@@ -54,44 +54,156 @@ In order to do this with the tidyverse, you would start with the dataset, the ru
 library(tidyverse)
 iris_tibble <- as.tibble(iris)
 
-iris %>%
-  filter(Species == "setosa") %>%
-  filter(Petal.Width > .2) %>%
-  select(Sepal.Length, Species)
+txhousing %>%
+  filter(city == "El Paso") %>%
+  filter(year >= 2011) %>%
+  select(1,5)
+
 ```
 
 Both create the same output, but one is much easier to read.
 
 We will now explore a dataset using the five verbs in the dplyr package.
+You use each of the five verbs as you would in English to think about how you want to manipulate your data.
+
+They key to using the tidyverse is the %>% operator (the pipe operator).
+It works by taking output from what is before it and piping it to the next command.
 
 ## Economics Data
 
+The dataset here comes from housing sales data in Texas provided by the TAMU real estate centre.
+
+Variable | Description 
+---------|-----------------
+city | Name of MLS area
+year,month,date |Date
+sales | Number of sales
+volume | Total value of sales
+median | Median sale price
+listings | Total active listings
+inventory | "Months inventory" : amount of time it would take to sell all current listings at current pace of sales.
+
 ### Select
+
+The select command works by "Selecting" the columns you wish to work with.
+It can either take the index of the column using numbers, or the text.
+There are other options like asking for columns that start or end with certain text.
+
+```{r}
+txhousing %>%
+  select(1,2)
+
+txhousing %>%
+  select(1:3)
+
+txhousing %>%
+  select(city, sales:median)
+
+txhousing %>%
+  select(starts_with("ci"))
+
+txhousing %>%
+  select(-city)
+```
+
 
 ### Filter
 
+Once we have the columsn we want to work with, we can then pick the rows that are of interest.
+We do this with the filter function.
+Here when asking for matches of charater strings, you need to use the ``==``.
+R will remind you if you forget.
+The filter command can be combined with the logical operators. 
+Remember this includes negation operators. 
+
+```{r}
+txhousing %>%
+  filter(city == "El Paso")
+
+txhousing %>%
+  filter(city == "El Paso" | city == "San Antonio")
+
+txhousing %>%
+  filter(city == "El Paso" | city == "San Antonio") %>%
+  filter(year >= 2004) 
+
+txhousing %>%
+  filter(city == "El Paso" | city == "San Antonio") %>%
+  filter(year >= 2004) %>%
+  filter(month != 1)
+```
+
 ### Mutate
+
+The mutate command will create new variables.
+
+```{r}
+txhousing %>%
+  mutate(zSales = scale(sales))
+
+txhousing %>%
+  filter(city == "El Paso" | city == "San Antonio") %>%
+  filter(year >= 2004) %>%
+  filter(month != 1) %>%
+  mutate(zScale = scale(sales))
+```
+
 
 ### Arrange
 
-### Sumemrise 
+Arrange will sort our data. 
 
-### Quiz
+```{r}
+txhousing %>%
+  filter(city == "El Paso" | city == "San Antonio") %>%
+  filter(year >= 2004) %>%
+  filter(month != 1) %>%
+  mutate(zScale = scale(sales)) %>%
+  arrange(sales)
+
+txhousing %>%
+  filter(city == "El Paso" | city == "San Antonio") %>%
+  filter(year >= 2004) %>%
+  filter(month != 1) %>%
+  mutate(zScale = scale(sales)) %>%
+  arrange(sales, -year)
+
+```
+
+
+### Group By and  Sumemrise 
+
+Often we also want to perform the same type of calculation on a group in our dataset.
+For this we need to group our data, then use the summerise command. 
+We can alsu use the ``n()`` function to count the number of observations in each group.
+
+```{r}
+txhousing %>%
+  filter(city == "El Paso" | city == "San Antonio") %>%
+  filter(year >= 2004) %>%
+  group_by(year) %>%
+  summarise(mean = mean(sales))
+  
+
+txhousing %>%
+  filter(city == "El Paso" | city == "San Antonio") %>%
+  filter(year >= 2004) %>%
+  group_by(year) %>%
+  summarise(mean = mean(sales), n = n())
+```
+
+
+### Work Time
 
 In a new script, create following:
 
-* Create a table with only ____
-* Create a table with SINGLE LOGIC
-* Create a table with DOUBLE LOGIC
+* Create a table with only the the first four counties in the dataset.
+* Next, run the same command and run that only using one argument that adds in counties that have the work "County" in the title
+* Create any new table using a single logical operator
+* Create a table with a double logical operator
+* Create a table that has no observations from either Paris or Waco.
 * Create a new variable, XXX that is
-* Find the most XXX
-* Find the Least
+* Find the month with the highest average scales in Tyler county for the year 2015
+* Create a table with data from Austin and Galveston, using only the last three years of the dataset. Group the sales by county and then calculate zscores for each county.
 
-## ggplot2
-
-One of R's strongest draws is it's ability to make nice plots.
-Many of the plots are made with ggplot2.
-If your data is tidy, it is also easier to explore.
-
-### Layering
 

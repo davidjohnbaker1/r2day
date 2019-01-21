@@ -25,6 +25,22 @@ Materials for a 2 day long crash course on R for beginners.
 * Please make sure to have computer with internet connection
 * Both OSX and Windows will be supported
 
+## LR Suggestions
+
+I. Day I
+	A. Downloading R 		Day I morning 1
+	B. R Platform and Interface	Day I morning 1
+	C. Basic Scripting Commands	Day I morning 2
+	D. Add-ons and Packages		Day I morning 2
+	E. Help in R			Day I morning 2
+II. Day II
+	A. Input of Datasets		Day I morning 2
+	B. Summary Measure		Day I morning 2 s
+	C. Graphical Displays		Day II morning 2
+	D. Statistical Tests (t.test) 	Day II morning 2
+	E. Linear and Multiple Regression Day II morning 2
+
+
 ## Day I
 
 * Introduction to R
