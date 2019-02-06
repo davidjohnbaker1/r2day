@@ -16,46 +16,8 @@ Materials for a 2 day long crash course on R for beginners.
 
 ## LR Suggestions
 
+I think in terms of the first day lecture, just make the point what is course is about and what is not about. It might help to have a small description of the course with the intended learning outcomes and a short syllabus for each day. In this syllabus you can also include a short description of which topics will be definitely included and which topics are tentative.
+
 ## Day I
 
-* Introduction to R
-  * Why R?
-		i. community (get in pairs) 
-		ii. (rest of list)
-		iii. Learning curve (no dumb questions) 
-	B. R and RStudio and tidyverse
-	C. Downloading and Installing R
-		i. CRAN
-		ii. RStudio
-		iii. Theory of Packages
-	D. RStudio Environment
-	E. Theory of Workflow (Good Programming Practice)
-		i. R vs GUI
-		ii. Saving Scripts
-		iii. "House Style" 
-II. Using R
-	A. RStudio Shortcuts and RMarkdown
-	B. R as Calculator
-		i. Math
-		ii. Types of Data 
-		iii. Logical
-	C. Pre-Imported Datasets
-	D. Calculator --> basic plot flow
-	E. Data Exploration
-	F. Saving Your Script
-
-## Day II
-
-III. tidyverse
-	A. Review of Day I
-	B. Theory of Packages
-	C. tidyverse + tidydata
-	D. Five Verbs 
-IV. Modeling  
-	A. ggplot2 linear plot
-		i. viewing
-		ii. t-tests 
-	B. basic linear model 
-	C. interpreting
-	D. Markdown, shiny, data.table, psych, twitteR, spotifyR, bookdown
 
