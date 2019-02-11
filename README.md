@@ -2,6 +2,11 @@
 
 Materials for a 2 day long crash course on R for beginners.
 
+
+![](img/minerva-logo.png)
+
+* Add image to SLIDES!
+
 ## TO DO
 
 * PUT IN CC STATEMENT
