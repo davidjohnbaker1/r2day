@@ -3,8 +3,8 @@ title: "Using R"
 author: "David John Baker"
 date: "12/23/2018"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ![](../img/minerva-logo.png)

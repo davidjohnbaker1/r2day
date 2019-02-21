@@ -1,11 +1,11 @@
 ---
 title: "Why R?"
-subtitle: "Minerva Statistical Consulting"
 author: "David John Baker"
 date: "02/23/2019"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
+subtitle: Minerva Statistical Consulting
 ---
 
 ![](../img/minerva-logo.png)

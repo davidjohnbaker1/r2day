@@ -2,7 +2,9 @@
 title: "tidyverse"
 author: "David John Baker"
 date: "12/23/2018"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ![](../img/minerva-logo.png)
