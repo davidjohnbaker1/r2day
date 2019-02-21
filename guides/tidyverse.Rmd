@@ -192,18 +192,20 @@ txhousing %>%
   summarise(mean = mean(sales), n = n())
 ```
 
-
 ### Work Time
+
+We will now explore the dataset using some guided questions.
 
 In a new script, create following:
 
 * Create a table with only the the first four counties in the dataset.
 * Next, run the same command and run that only using one argument that adds in counties that have the work "County" in the title
 * Create any new table using a single logical operator
-* Create a table with a double logical operator
+* Create a table with a two logical operators
 * Create a table that has no observations from either Paris or Waco.
-* Create a new variable, XXX that is
+* Create a new variable based on two other variables 
 * Find the month with the highest average scales in Tyler county for the year 2015
-* Create a table with data from Austin and Galveston, using only the last three years of the dataset. Group the sales by county and then calculate zscores for each county.
+* Create a table with data from Austin and Galveston, using only the last three years of the dataset. Group the sales by county and then calculate z scores for each county. 
+* Save your new table to a csv file
 
 

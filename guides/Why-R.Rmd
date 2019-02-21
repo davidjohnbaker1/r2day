@@ -1,7 +1,8 @@
 ---
 title: "Why R?"
+subtitle: "Minerva Statistical Consulting"
 author: "David John Baker"
-date: "12/23/2018"
+date: "02/23/2019"
 output:
   html_document: default
   pdf_document: default

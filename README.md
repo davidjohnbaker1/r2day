@@ -1,17 +1,8 @@
 # r2day
 
-Materials for a 2 day long crash course on R for beginners.
-
+This repository contains materials for a 2 day long course on R for beginners.
 
 ![](img/minerva-logo.png)
-
-* Add image to SLIDES!
-
-## TO DO
-
-* PUT IN CC STATEMENT
-* Google Slides
-* Slides for Download on github
 
 ## Pre-Reqs
 
@@ -19,10 +10,34 @@ Materials for a 2 day long crash course on R for beginners.
 * Please make sure to have computer with internet connection
 * Both OSX and Windows will be supported
 
-## LR Suggestions
+## Schedule 
 
-I think in terms of the first day lecture, just make the point what is course is about and what is not about. It might help to have a small description of the course with the intended learning outcomes and a short syllabus for each day. In this syllabus you can also include a short description of which topics will be definitely included and which topics are tentative.
+1. Introductions 
+  + DJB introduction
+  + Peer Introduction
+  + Course Goals
+2. Course Objectives 
+  + Objectives/Syllabus
+  + Teaching caveats 
+  + The Forgetting curve and learning expectations with R
+3. Why R?
+  + Learning Goals 
+  + Lesson 
+  + Reflections
+4. Using R
+  + Lesson Goals 
+  + Lesson 
+  + Reflections
+5. tidyverse
+  + Lesson Goals 
+  + Lesson
+  + Reflections
+6. Modeling
+  + Lesson Goals
+  + ggplot2
+  + Basic Statistical Modeling
+  + Reflections
+  
 
-## Day I
 
 
