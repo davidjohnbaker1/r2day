@@ -8,6 +8,8 @@ output:
   pdf_document: default
 ---
 
+![](../img/minerva-logo.png)
+
 ## Lesson Goals
 
 * Install R

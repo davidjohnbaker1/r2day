@@ -7,6 +7,8 @@ output:
   pdf_document: default
 ---
 
+![](../img/minerva-logo.png)
+
 ## Lesson Goals
 
 * Run Basic Commands in R

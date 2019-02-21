@@ -5,13 +5,22 @@ date: "12/23/2018"
 output: html_document
 ---
 
+![](../img/minerva-logo.png)
+
+## Lesson Goals
+
+* Be able to explain tidy data
+* Explain the five tidyverse verbs
+* Perform basic indexing
+* Import and Export data from R 
+
 ## tidyverse + tidydata
 
 One of the most important concepts data science and R is the idea of [tidydata](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
 
 The idea behind tidy data is that...
 
-1. Each variable forms a colum
+1. Each variable forms a column
 2. Each observation forms a row.
 3. Each type of observation unit forms a table.
 
@@ -109,9 +118,9 @@ txhousing %>%
 
 ### Filter
 
-Once we have the columsn we want to work with, we can then pick the rows that are of interest.
+Once we have the columns we want to work with, we can then pick the rows that are of interest.
 We do this with the filter function.
-Here when asking for matches of charater strings, you need to use the ``==``.
+Here when asking for matches of character strings, you need to use the ``==``.
 R will remind you if you forget.
 The filter command can be combined with the logical operators. 
 Remember this includes negation operators. 
@@ -174,8 +183,8 @@ txhousing %>%
 ### Group By and  Sumemrise 
 
 Often we also want to perform the same type of calculation on a group in our dataset.
-For this we need to group our data, then use the summerise command. 
-We can alsu use the ``n()`` function to count the number of observations in each group.
+For this we need to group our data, then use the summarize command. 
+We can also use the ``n()`` function to count the number of observations in each group.
 
 ```{r}
 txhousing %>%

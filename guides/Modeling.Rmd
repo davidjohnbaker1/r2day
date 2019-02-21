@@ -5,6 +5,15 @@ date: "12/23/2018"
 output: html_document
 ---
 
+![](../img/minerva-logo.png)
+
+## Lesson Goals
+
+* Learn how to connect data indexing to ggplot2 
+* Understand layers and geoms in ggplot2
+* Run basic linear regression in R
+* Understand linear regression output 
+
 ## Plots and Modeling
 
 Using our data from before, let's now try to make a plot where we predict X from Y.
@@ -25,7 +34,7 @@ Now what are going to plot this.
 Note that we can fuse together what we did before in terms of our tidyverse indexing with that of ggplot2.
 
 The way that this works it that we pipe our data to ggplot then pass what are called aesthetics to the function.
-These are very much like using transparancies with an overhead projector. 
+These are very much like using transparencies with an overhead projector. 
 
 ```{r}
 txhousing %>%
@@ -90,7 +99,7 @@ txhousing %>%
 
 Now let's say that we want to run a t-test to see if there are any differences between sales in counties.
 There are (annoyingly) a few ways to do this with R.
-Generally we still need our data to be in some sort of tidyformat.
+Generally we still need our data to be in some sort of tidy format.
 
 
 ```{r}
@@ -117,7 +126,7 @@ t.test(elpasoVaustin$sales ~ elpasoVaustin$city, paired = TRUE )
 ```
 
 Though t-tests are important, linear models are the more common model that most people will be running.
-Linear models model the relationship betweeen one or more variables and another variable.
+Linear models model the relationship between one or more variables and another variable.
 I won't go into the the nitty gritty of the assumptions of linear models, as this is not a stats course, but we will go over how to get everything you need.
 
 ## Basic Linear Models 
@@ -145,17 +154,17 @@ summary(model1)
 ## Model Interpretation
 
 The call lets us know what we put into R.
-Our coeffecients tell us the degree to which one variable effects another.
-The estimates are our intercept and beta-coeffecient (non-standardized!).
+Our coefficients tell us the degree to which one variable effects another.
+The estimates are our intercept and beta-coefficient (non-standardized!).
 For everyone one unit increase in our IV (listings) we can expect a .179 rise in our DV (sales) in whatever unit they are!
 Your test statistics are to the right of that.
 Standard errors are calculated on your estimate (how much error there is on either side)
 You t-value is you test statistic.
 Your p value is the probability of getting a non-zero value given the null hypothesis that there is no effect.
-Degrees of freedom are listd below.
+Degrees of freedom are listed below.
 Your multiple-R squared tells you how much variance you explain.
 
-We can then add more variables to try to improve our predition.
+We can then add more variables to try to improve our prediction.
 For example, what happens when we add in the year as a variable?
 
 ```{r}
@@ -168,7 +177,7 @@ Here we also find a significant effect of year and listing on sales.
 Our model fit improves a very small amount, yet the difference is significant.
 This *significance* should be interpreted with caution as we have a lot of data and the more data you have, the more likely a result is to come up as p <.01.
 
-We also can get infomation from the model with the ```plot()``` function.
+We also can get information from the model with the ```plot()``` function.
 Here we can get into the nitty gritty like checking if our residuals are normally distributed. 
 
 We can also test the degree that one model is better than another with the ```anova()``` function.
