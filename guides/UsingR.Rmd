@@ -3,8 +3,8 @@ title: "Using R"
 author: "David John Baker"
 date: "12/23/2018"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ![](../img/minerva-logo.png)
@@ -39,6 +39,88 @@ sqrt(81)
 10 > 4
 2 < -1
 ```
+
+Now from the output above, you'll notice that there are a few different types of responses that R will give.
+For the math responses, we get numbers, but we can also get TRUE and FALSE statements.
+
+When working with data, we need to be aware not only of what the data represents, but what R thinks it represents.
+We won't go over the differences between things like ordinal, ratio, and categorical data, I'll assume you have a basic understanding of this.
+What we will focus on is the different data types that R thinks in.
+
+For now, we are going to talk about R's basic data structures.
+
+* Logical
+* Integer
+* Double (numeric)
+* Character 
+* Factor 
+
+The first is logical. 
+Logical is basically just TRUE or FALSE.
+We can try a few different expressions that show how this works.
+
+```{r}
+2 > 4
+
+1 > 0
+
+4 >= 7
+
+5 != 5
+```
+Eventually you will learn to take advantage of the complexities of this when we get to subsetting and combining them with other logical operators like ```&```(and) and ```|``` (OR).
+
+Next we have integers and double.
+Both integers and double are R's numeric forms of data.
+The ```is.numeric()``` command checks for if data is number-y.
+
+```{r}
+is.integer(7L)
+is.double(7)
+is.numeric(7)
+```
+
+Next we have characters.
+Characters are not *just* letters, but rather data that is text.
+Character data is always wrapped in quotes ```" "```
+
+```{r}
+is.character("hello, world!")
+
+is.character("7")
+
+is.character("I will drink 7 coffees by the end of today!")
+
+is.character("NA")
+
+```
+Note that if a special character like ```NA``` is in quotes, R will still think it is a character.
+To change this, we need to coerce our data into a different type.
+We will cross that bridge later.
+For now, you just need to be aware of the different character types.
+
+Lastly, there are factors which sometimes LOOK like characters, but are R's way of thinking about categorical data.
+We need to assign this to R.
+When you first import in data into R, it will sometimes guess it as being a factor which is very annoying! 
+If R is being slow, or not responding to something you want it to do, a common rookie mistake is to have your data accidentally be a factor.
+
+```{r}
+
+is.factor("doggo")
+
+doggo <- as.factor("doggo")
+
+is.factor(doggo)
+
+is.character(doggo)
+
+is.numeric(doggo)
+
+```
+
+Now that we're at least aware of the different types of data in R, we can move on to building up an intuitive understanding of how R thinks about data under the hood. 
+
+## Being Lazy 
 
 You don't always want to print your output and retype it in. 
 The idea of being a good programmer is to be very lazy (efficient).

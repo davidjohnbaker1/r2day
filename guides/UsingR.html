@@ -411,6 +411,58 @@ $(document).ready(function () {
 <pre><code>## [1] TRUE</code></pre>
 <pre class="r"><code>2 &lt; -1</code></pre>
 <pre><code>## [1] FALSE</code></pre>
+<p>Now from the output above, you’ll notice that there are a few different types of responses that R will give. For the math responses, we get numbers, but we can also get TRUE and FALSE statements.</p>
+<p>When working with data, we need to be aware not only of what the data represents, but what R thinks it represents. We won’t go over the differences between things like ordinal, ratio, and categorical data, I’ll assume you have a basic understanding of this. What we will focus on is the different data types that R thinks in.</p>
+<p>For now, we are going to talk about R’s basic data structures.</p>
+<ul>
+<li>Logical</li>
+<li>Integer</li>
+<li>Double (numeric)</li>
+<li>Character</li>
+<li>Factor</li>
+</ul>
+<p>The first is logical. Logical is basically just TRUE or FALSE. We can try a few different expressions that show how this works.</p>
+<pre class="r"><code>2 &gt; 4</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>1 &gt; 0</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>4 &gt;= 7</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>5 != 5</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<p>Eventually you will learn to take advantage of the complexities of this when we get to subsetting and combining them with other logical operators like <code>&amp;</code>(and) and <code>|</code> (OR).</p>
+<p>Next we have integers and double. Both integers and double are R’s numeric forms of data. The <code>is.numeric()</code> command checks for if data is number-y.</p>
+<pre class="r"><code>is.integer(7L)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>is.double(7)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>is.numeric(7)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>Next we have characters. Characters are not <em>just</em> letters, but rather data that is text. Character data is always wrapped in quotes <code>&quot; &quot;</code></p>
+<pre class="r"><code>is.character(&quot;hello, world!&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>is.character(&quot;7&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>is.character(&quot;I will drink 7 coffees by the end of today!&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>is.character(&quot;NA&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>Note that if a special character like <code>NA</code> is in quotes, R will still think it is a character. To change this, we need to coerce our data into a different type. We will cross that bridge later. For now, you just need to be aware of the different character types.</p>
+<p>Lastly, there are factors which sometimes LOOK like characters, but are R’s way of thinking about categorical data. We need to assign this to R. When you first import in data into R, it will sometimes guess it as being a factor which is very annoying! If R is being slow, or not responding to something you want it to do, a common rookie mistake is to have your data accidentally be a factor.</p>
+<pre class="r"><code>is.factor(&quot;doggo&quot;)</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>doggo &lt;- as.factor(&quot;doggo&quot;)
+
+is.factor(doggo)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>is.character(doggo)</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>is.numeric(doggo)</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<p>Now that we’re at least aware of the different types of data in R, we can move on to building up an intuitive understanding of how R thinks about data under the hood.</p>
+</div>
+<div id="being-lazy" class="section level2">
+<h2>Being Lazy</h2>
 <p>You don’t always want to print your output and retype it in. The idea of being a good programmer is to be very lazy (efficient).</p>
 <p>One of the best ways to be efficient when programming is to save variables to objects. Below is some example code that uses the <code>&lt;-</code> operator to assign some math to an object. After you assign it to an object, you can then manipulate it like you would any other number. Yes, you can use <code>=</code> as an assignment operator (for all you Pythonistas), but in R this is considered bad practice as R is primarily a statistical programming language and the <code>=</code> sign means something very different in a math context.</p>
 <pre class="r"><code>foo &lt;- 2 * 3
